@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Parking Management System</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        
+        <style>
+            th {
+                padding-top: 5px;
+                padding-bottom: 5px;
+                padding-right: 10px;
+                padding-left:10px;
+            }
+            td {
+                padding-top: 5px;
+                padding-bottom: 5px;
+                padding-right: 10px;
+                padding-left:10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1 style="font-weight:bold; font-style:italic;">PARKING SYSTEM</h1>
+       
+            <hr>
+            <a class="btn btn-sm btn-info" th:href="@{/parkings/create}">Add Record</a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Plate Number</th>
+                        <th>Vehicle Type</th>
+                        <th>Check In</th>
+                        <th>Check Out</th>
+                        <th>Parking Fee (KH Riels)</th>
+                        <th>Status</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                	<tr th:if="${parkings.empty}">
+            			<td colspan="7"> No Books Available </td>
+        			</tr>
+                    <tr th:each="park : ${parkings}">
+                        <td th:text="${park.plate_number}"></td>
+                        <td th:text="${park.vehicle_type}"></td>
+                        <td th:text="${park.check_in}"></td>
+                        <td th:text="${park.check_out}"></td>
+                        <td th:text="${park.parking_fee}"></td>
+                        <td style="text-align:center;" th:text="${park.status}"></td>
+                        <td style="text-align:center;">
+                        	<a th:href="@{/parkings/{id}/edit(id=${park.id})}">Edit</a>&nbsp;&nbsp;
+                            <a style="color:red;" th:href="@{/parkings/{id}/del(id=${park.id})}">
+                                delete
+                            </a>
+                        </td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+            <!-- jQuery library -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+            <!-- Latest compiled JavaScript -->
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        </div>
+    </body>
+</html>

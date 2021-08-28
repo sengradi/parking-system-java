@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<database_configure>
+    <db_server>167.99.90.91</db_server>
+    <db_connection>mysql</db_connection>
+    <db_port>3306</db_port>
+    <db_name>parking-lot</db_name>
+    <username>pahnarith</username>
+    <password>msitdevops</password>
+</database_configure>
